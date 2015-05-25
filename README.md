@@ -36,32 +36,38 @@ Use `js/actions/MessagesActionCreator.jsx` to create an action for saving the me
 
 When the save succeeds, dispatch an action using the `Dispatcher`. The input to
 `Dispatcher.dispatch` is an object. We must always include a `type`, so the minimal
-action is `{ type: 'some-type' }`.
+dispatch is:
+
+```js
+Dispatcher.dispatch({ type: 'some-type' });
+```
 
 You can find all the relevant types for these tasks in `js/stores/MessagesStore`.
 Other than `type` you are free to add as many key/value pairs as you want.
 
-Every dispatched message is logged in the MessagesStore, so you can use this to
-debug your actions.
+Every dispatched message is logged in the `MessagesStore`, so you can use this
+to debug your actions.
 
 _Tips:_ The dispatcher docs: http://facebook.github.io/flux/docs/dispatcher.html
 
 _Tips 2:_ Both the channel and the message is needed in the store, so both should
 be sent.
 
-There are helper methods for adding and updating messages at the bottom of `MessagesStore`.
+There are helper methods for adding and updating messages at the bottom
+of `MessagesStore`.
 
 After changing the state of the store, you must always remember to emit. Usually
 this means calling `MessagesStore.emitChange()`. In the next tasks we will react
 to these events.
 
-For now you can check that everything works by logging the new `messages` state.
+For now you can check that everything works by logging the new `messages` state
+in the store.
 
 ## Task 2 - Displaying saved messages
 
 Now we want `js/components/Messages.jsx` to display the saved message. We start
 with listening for changes on the `MessagesStore`. We do this by registering a
-callback in `componentDidMount`, e.g.
+listener in `componentDidMount`, e.g.
 
 ```js
 componentDidMount() {
@@ -69,11 +75,16 @@ componentDidMount() {
 }
 ```
 
-You should also remove the listener in `componentWillUnmount`.
+This means that we add the listener when a component is added to the DOM. We
+should always remove the listener in `componentWillUnmount`, i.e. when the
+component is removed from the DOM.
+
+_Tips:_ Learn more about React's lifecycle methods in
+https://facebook.github.io/react/docs/component-specs.html#lifecycle-methods
 
 There is already an `_onChange` method in the `Messages` component.
-This callback uses the function `getStateFromStores`. This is a normal pattern
-in Flux. As you can see it's also used in `getInitialState`.
+This callback uses the function `getStateFromStores`, which is a normal pattern
+in Flux. As you can see the function is also used in `getInitialState`.
 
 In `getStateFromStores`, use `MessagesStore#all` to fetch all the messages on
 the current channel (which is available on the `props`).
@@ -98,12 +109,12 @@ is changed.
 
 We start in the `Messages` component. In `componentDidMount` we can check if
 messages are set. As this method is called after `getInitialState`, we can check
-if the messages received from the `MessagesStore` is undefined. If it is, we
+if the messages received from the `MessagesStore` is `undefined`. If it is, we
 know that we need to fetch messages from the backend.
 
-To fetch messages we can implement the `fetchAll` method in
-the `MessagesActionCreator`. We must remember to wrap the successfully received
-messages by calling `createMessage` on each, i.e.
+To fetch messages we can implement the `fetchAll` method in the
+`MessagesActionCreator`. We must remember to wrap the successfully received
+messages by calling `createMessage` on each, e.g.
 
 ```js
 let messages = messagesReceived.map(createMessage);
@@ -111,7 +122,24 @@ let messages = messagesReceived.map(createMessage);
 
 We can do this either in the action or in the store.
 
-On success we dispatch it and update the state in the `MessagesStore`.
+On success we dispatch the messages and update the state in the `MessagesStore`.
 (Remember the helpers at the bottom. And remember to emit after change.)
 
+Now, if you refresh you should see an initial message from the server.
+If you write messages then refresh, they should be received from the server.
+
+## Task 4 - Handling multiple channels
+
+Now we need to handle multiple channels. If we go to the `#random` channel,
+nothing happens and it keeps all the messages from `#general`.
+
+`componentWillReceiveProps`
+
+## Task 5 - Error handling
+
+`fetchAll` fails
+
+## Task 6 - Retry on error
+
+`create` fails
 
