@@ -117,9 +117,9 @@ if the messages received from the `MessagesStore` is `undefined`. If it is, we
 know that we need to fetch messages from the backend.
 
 To fetch messages we can implement the `fetchAll` method in the
-`MessagesActionCreator`. We must remember to wrap the successfully received
-messages by calling `createMessage` on each. You can use the `createMessages`
-helper at the bottom of the action creator.
+`MessagesActionCreator`. To get the messages on the correct form, wrapped in
+ImmutableJS, we should call `createMessage` on each message. You can use the
+`createMessages` helper at the bottom of the action creator.
 
 On success we dispatch the messages and update the state in the `MessagesStore`.
 (Remember the helpers at the bottom. And remember to emit after change.)
