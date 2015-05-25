@@ -118,13 +118,8 @@ know that we need to fetch messages from the backend.
 
 To fetch messages we can implement the `fetchAll` method in the
 `MessagesActionCreator`. We must remember to wrap the successfully received
-messages by calling `createMessage` on each, e.g.
-
-```js
-let messages = messagesReceived.map(createMessage);
-```
-
-We can do this either in the action or in the store.
+messages by calling `createMessage` on each. You can use the `createMessages`
+helper at the bottom of the action creator.
 
 On success we dispatch the messages and update the state in the `MessagesStore`.
 (Remember the helpers at the bottom. And remember to emit after change.)
@@ -149,7 +144,8 @@ componentWillReceiveProps(nextProps) {
 }
 ```
 
-Again we can use `getStateFromStores`.
+Again we can use `getStateFromStores` to get the state. Remember to send in
+the new props.
 
 When changing state we must remember that the component is responsible for
 fetching data. One way of doing this is in the callback to `setState`:

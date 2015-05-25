@@ -47,3 +47,7 @@ export default {
 
 };
 
+function createMessages(messages) {
+    return Immutable.fromJS(messages)
+        .map(createMessage);
+}
