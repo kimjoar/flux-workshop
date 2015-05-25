@@ -35,11 +35,15 @@ and press Enter, we should see a log in the console.
 Use `js/actions/MessagesActionCreator.jsx` to create an action for saving the message.
 
 When the save succeeds, dispatch an action using the `Dispatcher`. The input to
-`Dispatcher.dispatch` is an object. We must always include a `type`, so the minimal
-dispatch is:
+`Dispatcher.dispatch` is an object. We should always include a `type`, as this
+is used in the store to identify an action. Example dispatch:
 
 ```js
-Dispatcher.dispatch({ type: 'some-type' });
+Dispatcher.dispatch({
+    type: 'some-type',
+    key: 'value',
+    anotherKey: 42
+});
 ```
 
 You can find all the relevant types for these tasks in `js/stores/MessagesStore`.
