@@ -137,7 +137,36 @@ If you write messages then refresh, they should be received from the server.
 Now we need to handle multiple channels. If we go to the `#random` channel,
 nothing happens and it keeps all the messages from `#general`.
 
-`componentWillReceiveProps`
+The reason this happens is that React does not remove the component from
+the DOM when changing the route. Therefore `componentDidMount` is not called.
+However, `componentWillReceiveProps` is called instead.
+
+We therefore need to "reset" our component state based on the new props:
+
+```js
+componentWillReceiveProps(nextProps) {
+    this.setState(...);
+}
+```
+
+Again we can use `getStateFromStores`.
+
+When changing state we must remember that the component is responsible for
+fetching data. One way of doing this is in the callback to `setState`:
+
+```js
+this.setState(newState, function() {
+    if (this.state.someState == null) {
+        // fetch data
+    }
+});
+```
+
+I.e. what happens in the callback is basically the same messages check
+and action creation done in `componentDidMount`.
+
+Now if we refresh and change tabs, data for the new channel should be fetched
+and displayed.
 
 ## Task 5 - Error handling
 
