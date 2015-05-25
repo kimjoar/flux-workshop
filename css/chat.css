@@ -1,0 +1,79 @@
+.chat {
+    position: fixed;
+    top: 3rem;
+    bottom: 3.5rem;
+    left: 10rem;
+    right: 1.5rem;
+    overflow-y: auto;
+}
+
+.chat-input {
+    position: fixed;
+    bottom: 0;
+    left: 10rem;
+    right: 0;
+}
+
+.chat-input input {
+    width: 99%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 2px solid #ccc;
+    border-radius: 0.3rem;
+    margin: 0.5rem;
+    margin-left: -0.2rem;
+}
+
+.messages {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.message {
+    border-top: 1px solid #eee;
+    padding: 0.5rem;
+}
+
+.message-failed {
+    background-color: red;
+    color: #fff;
+}
+
+.channels {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    width: 9rem;
+    top: 6rem;
+    overflow-y: auto;
+}
+
+.channel a {
+    display: block;
+    background-color: #eee;
+    padding: 0.5rem 0.5rem 0.5rem 1.5rem;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    margin-bottom: 0.2rem;
+    color: #333;
+    text-decoration: none;
+}
+
+.channel a:before {
+    content: "#";
+    color: #aaa;
+    margin-right: 0.2rem;
+}
+
+.channel a:hover,
+.channel.channel-active a {
+    color: #fff;
+    background-color: green;
+}
+.channel a:hover:before,
+.channel.channel-active a:before {
+    color: #ddd;
+}
+

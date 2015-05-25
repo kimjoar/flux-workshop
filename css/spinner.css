@@ -1,0 +1,30 @@
+.u-spinner {
+    width: 24px;
+    height: 24px;
+    border-top: 2px solid #999;
+    border-right: 2px solid #F2F2F2;
+    animation: rotate 1s ease infinite;
+    border-radius: 100%;
+}
+@keyframes rotate {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.u-spinner--inline {
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    vertical-align: middle;
+}
+
+.u-spinner--large {
+    position: absolute;
+    top: 150px;
+    left: 50%;
+    width: 5em;
+    height: 5em;
+    margin-left: -2.5em;
+}
+
