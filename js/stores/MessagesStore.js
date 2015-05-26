@@ -86,7 +86,7 @@ export default MessagesStore;
 // Reset all messages on a channel
 function updateMessages(channel, newMessages) {
     console.log('STORE', 'messages received:', channel, newMessages.toJS());
-    messages = messages.set(channel, newMessages.map(createMessage));
+    messages = messages.set(channel, newMessages);
 }
 
 // Add or update a message on a channel
