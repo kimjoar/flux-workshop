@@ -16,7 +16,7 @@ export default {
 
         ajax.post('/message/' + channel, fields).then(
             newFields => {
-                console.log('ACTION', 'save successful:', res);
+                console.log('ACTION', 'save successful:', newFields.toJS());
 
                 message = message.set('fields', newFields);
 

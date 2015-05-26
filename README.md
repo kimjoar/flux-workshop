@@ -1,30 +1,21 @@
-# Flux-based Chat Application
-
-This is a starting point showing how a Flux-based application can be implemented.
+# Introduction to Flux
 
 ## Getting started
 
 ```sh
 $ npm install
+
+# Start server
 $ npm start
-```
 
-Go to http://localhost:9999/
-
-## Development
-
-```sh
-# Frontend development
+# Build frontend (with watching)
 $ npm run watch
-
-# Backend development
-$ npm run server-watch
 ```
 
 # Tasks
 
-Start by running the development setup above, and open http://localhost:9999,
-then open the console.
+Start by running the setup above, and open http://localhost:9999 and the
+DevTools console.
 
 The app uses both ImmutableJS and ES6, so check out these resources:
 
@@ -37,7 +28,13 @@ We'll start by saving messages. Go to `js/components/MessageInput.jsx`.
 This component wraps the input field at the bottom of the screen. When we type
 and press Enter, we should see a log in the console.
 
-Use `js/actions/MessagesActionCreator.jsx` to create an action for saving the message.
+Use `js/actions/MessagesActionCreator.jsx` to create an action for saving the
+message.  All Ajax responses are immutable objects (created with ImmutableJS),
+therefore it's often helpful to add `.toJS()` when logging them, e.g.
+
+```js
+console.log(newFields.toJS());
+```
 
 When the save succeeds, dispatch an action using the `Dispatcher`. The input to
 `Dispatcher.dispatch` is an object. We should always include a `type`, as this
