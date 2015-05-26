@@ -2,8 +2,7 @@
   "name": "flux-workshop",
   "private": true,
   "scripts": {
-    "start": "npm run build && npm run backend",
-    "backend": "node server.js",
+    "start": "node server.js",
     "server-watch": "nodemon server.js -w server.js",
     "build": "gulp",
     "watch": "gulp watch"
