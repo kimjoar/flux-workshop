@@ -225,3 +225,11 @@ channel's messages and fail, and it should display an error message to the user.
 If you then start the server again, and go back and forth between the channels,
 the messages should be loaded.
 
+## Task 6 - Receive messages via WebSockets
+
+The server has support for sending messages via WebSockets. There is a connection
+setup already in `MessagesActionCreator`. If you connect when `App.jsx` mounts
+and implements `receive_messages` in `MessagesStore`, you will receive all
+messages sent to the server. To test this, open a new browser window and send
+some messages and see them appear in the other window.
+
