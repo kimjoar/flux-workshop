@@ -26,6 +26,11 @@ $ npm run server-watch
 Start by running the development setup above, and open http://localhost:9999,
 then open the console.
 
+The app uses both ImmutableJS and ES6, so check out these resources:
+
+* http://facebook.github.io/immutable-js/
+* https://github.com/lukehoban/es6features
+
 ## Task 1 - Save a message
 
 We'll start by saving messages. Go to `js/components/MessageInput.jsx`.
