@@ -166,9 +166,51 @@ and displayed.
 
 ## Task 5 - Error handling
 
-`fetchAll` fails
+It's time to handle errors when fetching messages. In `MessagesActionCreator`
+we already handle the success case in the first callback to `then`. In the
+second callback we receive an error, e.g.
+
+```js
+ajax.get('/url').then(
+    res => {
+        // handle success
+    },
+    err => {
+        // handle error
+    }
+);
+```
+
+The task is to handle errors when `fetchAll` fails. One possibility is dispatching
+an action with the type `receive_messages_failed` that includes the error. Then,
+in the store, we can save this error the same way we set `messages`, i.e. its
+own object that contain the last error for each channel.
+
+With this in place, the `Messages` component can fetch the error from the store
+in its `getStateFromStores`, and, if there is an error, display an error using
+the `Alert` component, e.g.
+
+```js
+let error = this.state.error;
+
+if (error != null) {
+    return <Alert>
+        Feilmelding som skal vises til brukeren
+    </Alert>
+}
+```
+
+The easiest way to test this is by refreshing the application, stopping the
+backend server, then going to the other channel. This should try to load the
+channel's messages and fail, and it should display an error message to the user.
+If you then start the server again, and go back and forth between the channels,
+the messages should be loaded.
 
 ## Task 6 - Retry on error
 
 `create` fails
+
+## Task 7 - Activating on receive
+
+`ChannelStore`
 
