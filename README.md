@@ -130,17 +130,23 @@ If you write messages then refresh, they should be received from the server.
 
 ## Task 4 - Handling multiple channels
 
-Now we need to handle multiple channels. If we go to the `#random` channel,
-nothing happens and it keeps all the messages from `#general`.
+Now we need to handle multiple channels. If we switch between the channels on
+the frontend, nothing happens and it keeps all the messages from `#general`.
 
-The reason this happens is that React does not remove the component from
-the DOM when changing the route. Therefore `componentDidMount` is not called.
-However, `componentWillReceiveProps` is called instead.
+To fix this we need to make changes to `Messages.jsx`, so it fetches the new
+channel's messages when switching between the channels.
+
+The reason this doesn't work already is that React does not remove the
+component from the DOM when changing the route (i.e. changing the channel).
+Therefore `componentDidMount` is not called when we change routes. Instead
+`componentWillReceiveProps` is called with the new props, which in our case is
+the new channel.
 
 We therefore need to "reset" our component state based on the new props:
 
 ```js
 componentWillReceiveProps(nextProps) {
+    // nextProps will contain the new channel
     this.setState(...);
 }
 ```
