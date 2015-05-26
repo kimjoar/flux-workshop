@@ -151,8 +151,9 @@ componentWillReceiveProps(nextProps) {
 }
 ```
 
-Again we can use `getStateFromStores` to get the state. Remember to send in
-the new props.
+Again we can use `getStateFromStores` to get the state (i.e. messages), but now
+for the new channel. Remember to send in the new props to get the correct
+state.
 
 When changing state we must remember that the component is responsible for
 fetching data. One way of doing this is in the callback to `setState`:
@@ -191,7 +192,18 @@ ajax.get('/url').then(
 The task is to handle errors when `fetchAll` fails. One possibility is dispatching
 an action with the type `receive_messages_failed` that includes the error. Then,
 in the store, we can save this error the same way we set `messages`, i.e. its
-own object that contain the last error for each channel.
+own object, e.g. `errors`, that contain the last error for each channel.
+
+There is already a function at the bottom of the store you can start with.
+Btw, remember that we use ImmutableJS, so maps are immutable:
+
+```
+someMap.set('key', value);
+someMap.get('key') // undefined
+
+someMap = someMap.set('key', value);
+someMap.get('key') // value
+```
 
 With this in place, the `Messages` component can fetch the error from the store
 in its `getStateFromStores`, and, if there is an error, display an error using
