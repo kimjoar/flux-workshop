@@ -4,6 +4,8 @@ import React from 'react';
 import Alert from './Alert';
 import Spinner from './Spinner';
 import Message from './Message';
+import MessagesActionCreator from '../actions/MessagesActionCreator';
+import MessagesStore from '../stores/MessagesStore';
 
 function getStateFromStores(props) {
     return {

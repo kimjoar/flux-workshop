@@ -2,7 +2,6 @@ import React from 'react';
 
 import createMessage from '../lib/createMessage';
 import MessagesActionCreator from '../actions/MessagesActionCreator';
-import ActiveChannelMixin from '../lib/ActiveChannelMixin';
 
 const KEY_CODE_ENTER = 13;
 
