@@ -210,11 +210,3 @@ channel's messages and fail, and it should display an error message to the user.
 If you then start the server again, and go back and forth between the channels,
 the messages should be loaded.
 
-## Task 6 - Retry on error
-
-`create` fails
-
-## Task 7 - Activating on receive
-
-`ChannelStore`
-
