@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import _ from 'lodash';
+import Immutable from 'immutable';
 
 const ajax = {
 
@@ -55,7 +56,7 @@ export default ajax;
 function request(url, obj) {
     return new Promise((resolve, reject) => {
         $.ajax(url, obj).then(
-            data => resolve(data),
+            data => resolve(Immutable.fromJS(data)),
             jqXHR => reject(extractErrors(jqXHR))
         );
     });

@@ -1,4 +1,3 @@
-import Immutable from 'immutable';
 import io from 'socket.io-client';
 
 import ajax from '../lib/ajax';
@@ -16,10 +15,9 @@ export default {
         console.log('ACTION', 'saving message:', fields);
 
         ajax.post('/message/' + channel, fields).then(
-            res => {
+            newFields => {
                 console.log('ACTION', 'save successful:', res);
 
-                let newFields = Immutable.fromJS(res);
                 message = message.set('fields', newFields);
 
                 // TODO: Dispatch message to stores
@@ -47,7 +45,3 @@ export default {
 
 };
 
-function createMessages(messages) {
-    return Immutable.fromJS(messages)
-        .map(createMessage);
-}
