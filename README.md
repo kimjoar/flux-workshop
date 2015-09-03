@@ -1,5 +1,7 @@
 # Introduction to Flux
 
+Start by reading [this Flux overview](https://facebook.github.io/flux/docs/overview.html).
+
 ## Getting started
 
 ```sh
