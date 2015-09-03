@@ -16,7 +16,7 @@ $ npm run watch
 
 # Tasks
 
-Start by running the setup above, and open http://localhost:9999 and the
+Start by running the setup above, and open http://localhost:9990 and the
 DevTools console.
 
 The app uses both ImmutableJS and ES6, so check out these resources:

@@ -51,7 +51,7 @@ app.post('/message/:channel', function(req, res) {
     });
 });
 
-server.listen(9999, function() {
-    console.log('Running on port 9999');
+server.listen(9990, function() {
+    console.log('Running on port 9990');
 });
 
